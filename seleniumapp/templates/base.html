@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>スクレイピング　テスト</h1>
+
+    <form action="" method="post" style="margin-bottom: 50px;">
+        {% csrf_token%}
+        <button name="btn" value="start" class="btn">スクレイピング開始</button>
+        <button name="btn" value="delete" class="btn2">スクレイピングデータ削除</button>
+    </form>
+
+    {% for d in data %}
+    <div style="display:flex; margin-bottom: 10px;">
+        <div> {{ d.title }}</div>
+        <a href="{{ d.url }}"> {{ d.url }}</a>
+        <div> {{ d.created_at }}</div>
+    </div>      
+    {% endfor %}
+
+
+    <script>
+
+        $('.btn').on('click',() => {
+            alert('スクレイピングを開始します');
+        })
+
+        $('.btn2').on('click',() => {
+            alert('スクレイピングデータを削除します。');
+        })
+
+
+    </script>
+    
+</body>
+</html>
